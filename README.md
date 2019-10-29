@@ -1,16 +1,12 @@
 # Graphics
-Steps:
 
-Download https://desktop.github.com/
+## Automatic Setup
 
-Login
-
-Clone "Graphics" repo in a folder on your computer - this will download the project
-
-Then open GFX_Root/OpenGLProject/OpenGLProject.sln with visual studio
-
-Before building make sure that next to Local Windows Debugger that visual studio is in Debug x86 mode
-
+1. Download https://desktop.github.com/
+2. Login
+3. Clone "Graphics" repo in a folder on your computer - this will download the project
+4. Then open GFX_Root/OpenGLProject/OpenGLProject.sln with visual studio
+5. Before building make sure that next to Local Windows Debugger that visual studio is in Debug x86 mode
 Profit
 
 ## Manual Setup
