@@ -15,18 +15,18 @@ Profit
 
 ## Manual Setup
 
-1. Download GLFW, GLEW & Visual Studio
-   - a. GLFW: https://www.glfw.org/ (Download --> 64/32 bit windows binaries)
-   - b. GLEW: http://glew.sourceforge.net/index.html (Binaries!)
-   - c. VS19: https://visualstudio.microsoft.com/free-developer-offers/ (Visual Studio Community)
-2. Extract Downloaded Files
-3. Create a new folder (This is you project folder, name it OpenGLRoot for example.)
-4. Create two new subfolders inside your project (OpenGLRoot) folder and name them (External Resources & OpenGLVS)
+1. Download GLFW, GLEW & Visual Studio:
+   - a. GLFW: https://www.glfw.org/ (Download --> 64/32 bit windows binaries),
+   - b. GLEW: http://glew.sourceforge.net/index.html (Binaries!),
+   - c. VS19: https://visualstudio.microsoft.com/free-developer-offers/ (Visual Studio Community).
+2. Extract Downloaded Files.
+3. Create a new folder (This is you project folder, name it OpenGLRoot for example.).
+4. Create two new subfolders inside your project (OpenGLRoot) folder and name them (External Resources & OpenGLVS).
 5. Copy extracted zip files to your newly created folder (External Resources) and rename them GLFW & GLEW correspondingly.
 6. Open VS and create a new empty project.
-7. From the solution Explorer Right-click your project and click add --> New item and add a new .cpp file (main.cpp)
+7. From the solution Explorer Right-click your project and click add --> New item and add a new .cpp file (main.cpp).
 8. Right-click your project in the solution Explorer and head over properties.
-9. If your Machine is x86, follow these steps:   otherwise head over to step 10
+9. If your Machine is x86, follow these steps:   otherwise head over to step 10.
    - a. Platform --> Active (x32)
    - b. c/c++    --> General: Additional include Directories: 
      - a. $(SolutionDir)/../External Resources/GLFW/include
@@ -50,10 +50,10 @@ Profit
        - a. opengl32.lib
        - b. glew32s.lib
        - c. glfw3.lib
-11. Create tow new subfolders in OpenGLVS folder aand name then Debug and Release,
+11. Create two new subfolders in OpenGLVS folder and name them Debug and Release.
 12. Go to OpenGLRoot/GLEW/bin/Release/Win32 (If your machine is x86) OR x64 (If your machine is x64) and copy the glew32.dll file.
 13. Paste the .dll file in the Debug and Release Folders that you created.
-14. Paste the .dll file in the PATH: "OpenGLRoot/OpenGLVS/OpenGLVS"
+14. Paste the .dll file in the PATH: "OpenGLRoot/OpenGLVS/OpenGLVS".
 15. Click Apply and close the properties tab.
 16. In main.cpp copy & paste the following code:
 
