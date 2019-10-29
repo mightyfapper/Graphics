@@ -43,7 +43,7 @@ bool Engine::Init(int width, int height)
 	if (GLEW_OK != glewInit())
 	{
 		cout << "Failed to initialize GLEW" << endl;
-		return EXIT_FAILURE;
+		return false;
 	}
 
 	return true;
