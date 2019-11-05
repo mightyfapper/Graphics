@@ -12,7 +12,7 @@ Engine::~Engine()
 
 }
 
-bool Engine::Init(int width, int height)
+bool Engine::Window(int width, int height)
 {
 	// Init GLFW
 	if(!glfwInit())
@@ -33,20 +33,44 @@ bool Engine::Init(int width, int height)
 	glfwMakeContextCurrent(window);
 	glfwGetFramebufferSize(window, &FB_Width, &FB_Height);
 	
-	// Define the viewport dimensions
 	glViewport(0, 0, FB_Width, FB_Height);
 
 	// Init GLEW
-	// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
 	glewExperimental = GL_TRUE;
-	// Initialize GLEW to setup the OpenGL Function pointers
-	if (GLEW_OK != glewInit())
+	if (glewInit() != GLEW_OK)
 	{
 		cout << "Failed to initialize GLEW" << endl;
 		return false;
 	}
 
+	//glEnable(GL_DEPTH_TEST);
 	return true;
+}
+
+void Engine::Shader()
+{
+	GLfloat verts[]
+	{
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
+		0.0f, 0.5f, 0.0f
+	};
+
+	GLuint VBO, VAO;
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+	glBindVertexArray(VAO);
+	
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);
+
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid *) 0);
+	glEnableVertexAttribArray(0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glBindVertexArray(0);
 }
 
 void Engine::Start()
@@ -61,16 +85,13 @@ void Engine::Start()
 
 void Engine::Update()
 {
-	// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
 	glfwPollEvents();
 }
 
 void Engine::Render()
 {
-	// Clear the colorbuffer
 	glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	// Swap the screen buffers
 	glfwSwapBuffers(window);
 }

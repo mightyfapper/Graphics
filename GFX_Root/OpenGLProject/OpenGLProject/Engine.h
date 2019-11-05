@@ -5,15 +5,17 @@
 #include <GLFW/glfw3.h>
 using namespace std;
 
-class Engine {
+class Engine
+{
 public:
 	// Constructor
 	 Engine();
 	 ~Engine();
 
 	// Funcs
-	bool Init(int width, int height);
-	
+	bool Window(int width, int height);
+	void Shader();
+
 	void Start();
 	void Update();
 	void Render();
