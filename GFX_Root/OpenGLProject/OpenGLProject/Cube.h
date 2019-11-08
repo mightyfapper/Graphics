@@ -1,19 +1,12 @@
 #pragma once
-#include <gl/glew.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp> 
-#include <glm/gtx/transform.hpp>
+#include "GameObject.h"
 
-class Cube
+class Cube : public GameObject
 {
 public:
 	Cube();
 	~Cube();
 
-	glm::mat4 position, rotation, scale, Model_MAT;
-
-	// Loads verts into vertex buffer
+	// Loads cube verts into GL_ARRAY_BUFFER
 	void Init();
-
-	void SetModel(glm::vec3 pos, glm::vec3 rotAxis, GLfloat rotVal, glm::vec3 scl);
 };
