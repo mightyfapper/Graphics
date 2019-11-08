@@ -13,6 +13,10 @@ public:
 	glm::mat4 Projection_MAT, View_MAT;
 
 	void SetProjection(float fovy, float aspect, float zNear, float zFar);
-	void SetView(glm::vec3 eye, glm::vec3 center, glm::vec3 up);
+	
+	// pos: Camera position in World Space
+	// look: What it looks at
+	// Up: Up direction
+	void SetView(glm::vec3 pos, glm::vec3 look, glm::vec3 up);
 };
 

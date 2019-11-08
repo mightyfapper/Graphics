@@ -9,41 +9,29 @@ int main()
 	
 	Window *window = new Window();
 	Render *render = new Render();
-	Cube *cube0 = new Cube();
-	Cube *cube1 = new Cube();
-	Cube *cube2 = new Cube();
 	Camera* camera = new Camera();
 	
-	// Create window
+	// Calls GameObject constructor
+	Cube *cube0 = new Cube();
+	
 	window->Init(800, 600);
 
-	// Setup camera
 	camera->SetProjection(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
-	camera->SetView(glm::vec3(4, 3, -3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+	camera->SetView(glm::vec3(0, -3, 3), glm::vec3(), glm::vec3(0, 0, 1));
 
 	render->Init(camera);
 
-	// Setup GameObjects
 	cube0->Init();
-	cube0->SetModel(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1), 0, glm::vec3(1.f, 1.f, 1.f));
-	
-	cube1->SetModel(glm::vec3(3, 0, 0), glm::vec3(0, 0, 1), 0, glm::vec3(1.f, 1.f, 1.f));
 
-	cube2->SetModel(glm::vec3(-3, 0, 0), glm::vec3(0, 0, 1), 0, glm::vec3(1.f, 1.f, 1.f));
-
-	cube0->color = glm::vec4(1, 0, 0, 1);
-	cube1->color = glm::vec4(0, 1, 0, 1);
-	cube2->color = glm::vec4(0, 0, 1, 1);
+	cube0->SetColor(glm::vec4(1, 0, 0, 1));
 
 	do
 	{
+		cube0->ActivateMovement(window, 0.01f);
+
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		render->Draw(cube0);
-
-		render->Draw(cube1);
-
-		render->Draw(cube2);
 
 		glfwSwapBuffers(window->window);
 

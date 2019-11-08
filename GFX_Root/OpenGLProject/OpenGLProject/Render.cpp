@@ -9,6 +9,7 @@ Render::Render()
 	colorID = 0;
 	MVP_MAT = glm::mat4();
 	renderColor = glm::vec4();
+	mainCamera = NULL;
 }
 
 Render::~Render()

@@ -29,7 +29,7 @@ public:
 	// Get reference to camera to use when drawing
 	void Init(Camera *cam);
 
-	// Draws using MVP, MVP_MAT, vertexPosition_modelspace
+	// Draws using MVP, MVP_MAT, vertexPosition
 	void Draw(GameObject *GO);
 	void Cleanup();
 };
