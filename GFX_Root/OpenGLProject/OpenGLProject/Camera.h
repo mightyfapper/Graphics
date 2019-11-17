@@ -19,4 +19,3 @@ public:
 	// Up: Up direction
 	void SetView(glm::vec3 pos, glm::vec3 look, glm::vec3 up);
 };
-

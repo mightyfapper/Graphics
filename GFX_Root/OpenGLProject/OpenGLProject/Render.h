@@ -15,19 +15,19 @@ public:
 	Render();
 	~Render();
 
-	GLuint vertexBufferID, PID, vertexPosition_ID, MVP_ID, colorID;
+	GLuint vertexBuffer_ID, program_ID, vertexPosition_ID, MVP_ID, color_ID;
 	glm::mat4 MVP_MAT;
 
 	glm::vec4 renderColor;
 
-	Camera *mainCamera;
+	Camera *cameraRef;
 
 	// Generate vertex buffer with vertexBufferID as reference
 	// Generate shader program with PID as reference
 	// Get reference to a_vertexPosition
 	// Get reference to u_MVP
 	// Get reference to camera to use when drawing
-	void Init(Camera *cam);
+	void Init();
 
 	// Draws using MVP, MVP_MAT, vertexPosition
 	void Draw(GameObject *GO);
