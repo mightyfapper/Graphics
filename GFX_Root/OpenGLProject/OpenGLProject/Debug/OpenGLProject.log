@@ -1,8 +1,2 @@
-﻿  Camera.cpp
-  Cube.cpp
-  GameObject.cpp
-  Render.cpp
-  Window.cpp
-  main.cpp
-  Generating Code...
+﻿  main.cpp
   OpenGLProject.vcxproj -> S:\git\Graphics\GFX_Root\OpenGLProject\Debug\OpenGLProject.exe

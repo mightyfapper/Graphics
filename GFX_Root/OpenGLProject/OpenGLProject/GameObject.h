@@ -11,6 +11,9 @@ public:
 	GameObject();
 	~GameObject();
 
+	// 3D or 2D
+	GLuint type;
+
 	// Current state
 	glm::vec3 position;
 	
@@ -36,11 +39,13 @@ public:
 	// Saves MVP calculation
 	void SetModel();
 
-	// This activates that this moves
+	// Input loop
 	// +X is right
 	// +Y is forward
 	// +Z is up
-	void ActivateMovement(GLfloat speed);
+	void CheckInput(GLfloat speed);
+
+	void CheckCollision(GameObject *GO);
 
 private:
 	glm::mat4 pos_MAT, rot_MAT, scl_MAT;

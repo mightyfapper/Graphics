@@ -50,8 +50,7 @@ void Render::Draw(GameObject *GO)
 
 	glEnableVertexAttribArray(vertexPosition_ID);
 
-	// Read more
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glVertexAttribPointer(0, GO->type, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 

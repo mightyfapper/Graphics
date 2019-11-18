@@ -1,17 +1,16 @@
 #include "Window.h"
 #include "Render.h"
-#include "Cube.h"
 #include "Camera.h"
+#include "Cube.h"
+#include "Plane.h"
 
 int main()
 {
-	// Hover over functions to view arguments and comments
-	
-	Window *window = new Window();
-	Render *render = new Render();
-	Camera *camera = new Camera();
-	Cube *player = new Cube();
-	Cube *wall_1 = new Cube();
+	Window	*window = new Window();
+	Render	*render = new Render();
+	Camera	*camera = new Camera();
+	Cube	*player = new Cube();
+	Plane	*ground = new Plane();
 	
 	window->Init(800, 600);
 
@@ -19,47 +18,44 @@ int main()
 	camera->SetView(glm::vec3(0, -3, 3), glm::vec3(), glm::vec3(0, 0, 1));
 
 	render->Init();
+
+	// Renderer needs camera's View and Projection MAT to draw
 	render->cameraRef = camera;
 
-	player->Init();
-
+	// Player needs window reference to get input events
 	player->windowRef = window->window;
 
-	player->SetColor(glm::vec4(0, 0, 1, 1));
+	// Set ground properties
+	ground->SetPosition(glm::vec3(0, 0, -1));
+	ground->SetScale(glm::vec3(10, 50, 0));
+	ground->SetColor(glm::vec4(0, 1, 0, 1));
 
-	wall_1->SetColor(glm::vec4(1, 0, 0, 1));
-	wall_1->SetPosition(glm::vec3(2, 2, 0));
+	player->SetColor(glm::vec4(0, 0, 1, 1));
 	
+	// To enable Z-index buffer
 	glEnable(GL_DEPTH_TEST);
 	
+	// Engine loop
 	while (glfwGetKey(window->window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
 	glfwWindowShouldClose(window->window) == 0)
 	{
-		// Gameloop
-		player->ActivateMovement(0.01f);
+		// Game loop
+		player->CheckInput(0.01f);
 
-		GLfloat distanceX;
-		GLfloat distanceY;
-
-		distanceX = player->position[0] - wall_1->position[0];
-		distanceY = player->position[1] - wall_1->position[1];
-
-		if(glm::abs(distanceX) < 1 && glm::abs(distanceY) < 1)
-		{
-			cout << "collide" << endl;
-		}
-
-		// Render
+		// Render loop
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
+		player->Init();
 		render->Draw(player);
-		render->Draw(wall_1);
+
+		ground->Init();
+		render->Draw(ground);
 
 		glfwSwapBuffers(window->window);
-
 		glfwPollEvents();
 	}
 
+	// Exit
 	glfwTerminate();
 	
 	// Calls Render deconstrutor

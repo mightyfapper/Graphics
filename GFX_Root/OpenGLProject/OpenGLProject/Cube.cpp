@@ -2,7 +2,7 @@
 
 Cube::Cube()
 {
-
+	type = 3;
 }
 
 Cube::~Cube()
