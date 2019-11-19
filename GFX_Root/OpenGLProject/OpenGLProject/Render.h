@@ -15,11 +15,6 @@ public:
 	Render();
 	~Render();
 
-	GLuint vertexBuffer_ID, program_ID, vertexPosition_ID, MVP_ID, color_ID;
-	glm::mat4 MVP_MAT;
-
-	glm::vec4 renderColor;
-
 	Camera *cameraRef;
 
 	// Generate vertex buffer with vertexBufferID as reference
@@ -32,4 +27,8 @@ public:
 	// Draws using MVP, MVP_MAT, vertexPosition
 	void Draw(GameObject *GO);
 	void Cleanup();
+
+private:
+	GLuint VA_ID, VB_ID, EB_ID, program_ID, vertexPosition_ID, texCoord_ID, texture_ID, MVP_ID;
+	glm::mat4 MVP_MAT;
 };

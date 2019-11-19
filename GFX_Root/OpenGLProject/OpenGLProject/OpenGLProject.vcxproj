@@ -136,6 +136,8 @@
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +147,8 @@
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Shader.hpp" />
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

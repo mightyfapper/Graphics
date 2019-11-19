@@ -1,5 +1,6 @@
 #include "Window.h"
 #include "Render.h"
+#include "Texture.h"
 #include "Camera.h"
 #include "Cube.h"
 #include "Plane.h"
@@ -9,9 +10,11 @@ int main()
 	Window	*window = new Window();
 	Render	*render = new Render();
 	Camera	*camera = new Camera();
-	Cube	*player = new Cube();
 	Plane	*ground = new Plane();
-	
+	Cube	*player = new Cube();
+	Texture *grass = new Texture();
+	Texture *wall = new Texture();
+
 	window->Init(800, 600);
 
 	camera->SetProjection(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -25,16 +28,17 @@ int main()
 	// Player needs window reference to get input events
 	player->windowRef = window->window;
 
-	// Set ground properties
-	ground->SetPosition(glm::vec3(0, 0, -1));
-	ground->SetScale(glm::vec3(10, 50, 0));
-	ground->SetColor(glm::vec4(0, 1, 0, 1));
+	// Load and bind textures
+	grass->Bind("textures/grass.png", 0);
+	wall->Bind("textures/wall.png", 1);
 
-	player->SetColor(glm::vec4(0, 0, 1, 1));
-	
-	// To enable Z-index buffer
+	// Set ground attribs
+	ground->SetPosition(glm::vec3(0, 0, -1));
+	ground->SetScale(glm::vec3(5, 25, 1));
+
+	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_DEPTH_TEST);
-	
+
 	// Engine loop
 	while (glfwGetKey(window->window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
 	glfwWindowShouldClose(window->window) == 0)
@@ -44,11 +48,11 @@ int main()
 
 		// Render loop
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
-		player->Init();
+
+		player->Load();
 		render->Draw(player);
 
-		ground->Init();
+		ground->Load();
 		render->Draw(ground);
 
 		glfwSwapBuffers(window->window);
@@ -57,7 +61,7 @@ int main()
 
 	// Exit
 	glfwTerminate();
-	
+
 	// Calls Render deconstrutor
 	delete render;
 

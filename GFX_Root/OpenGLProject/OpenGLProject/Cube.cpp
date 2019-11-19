@@ -2,7 +2,10 @@
 
 Cube::Cube()
 {
-	type = 3;
+	obj_Type = 3;
+	buf_Stride = 5;
+	ele_Number = 36;
+	tex_Slot = 1;
 }
 
 Cube::~Cube()
@@ -10,47 +13,42 @@ Cube::~Cube()
 
 }
 
-void Cube::Init()
+void Cube::Load()
 {
-	static const GLfloat verts[] = {
-	-0.0f,-0.5f,-0.5f,
-	-0.5f,-0.5f, 0.5f,
-	-0.5f, 0.5f, 0.5f,
-	0.5f, 0.5f,-0.5f,
-	-0.5f,-0.5f,-0.5f,
-	-0.5f, 0.5f,-0.5f,
-	0.5f,-0.5f, 0.5f,
-	-0.5f,-0.5f,-0.5f,
-	0.5f,-0.5f,-0.5f,
-	0.5f, 0.5f,-0.5f,
-	0.5f,-0.5f,-0.5f,
-	-0.5f,-0.5f,-0.5f,
-	-0.5f,-0.5f,-0.5f,
-	-0.5f, 0.5f, 0.5f,
-	-0.5f, 0.5f,-0.5f,
-	0.5f,-0.5f, 0.5f,
-	-0.5f,-0.5f, 0.5f,
-	-0.5f,-0.5f,-0.5f,
-	-0.5f, 0.5f, 0.5f,
-	-0.5f,-0.5f, 0.5f,
-	0.5f,-0.5f, 0.5f,
-	0.5f, 0.5f, 0.5f,
-	0.5f,-0.5f,-0.5f,
-	0.5f, 0.5f,-0.5f,
-	0.5f,-0.5f,-0.5f,
-	0.5f, 0.5f, 0.5f,
-	0.5f,-0.5f, 0.5f,
-	0.5f, 0.5f, 0.5f,
-	0.5f, 0.5f,-0.5f,
-	-0.5f, 0.5f,-0.5f,
-	0.5f, 0.5f, 0.5f,
-	-0.5f, 0.5f,-0.5f,
-	-0.5f, 0.5f, 0.5f,
-	0.5f, 0.5f, 0.5f,
-	-0.5f, 0.5f, 0.5f,
-	0.5f,-0.5f, 0.5f
+	float verts[] =
+	{
+		-1,-1,1,	0, 0,
+		1,-1,1,		0, 1,
+		1,1,1,		1, 1,
+		-1,1,1,		1, 0,
+		
+		-1,-1,-1,	0, 0,
+		1,-1,-1,	0, 1,
+		1,1,-1,		1, 1,
+		-1,1,-1,	1, 0
+	};
 
+	GLuint elements[] =
+	{
+		0,2,1,
+		0,2,3,	// Front
+
+		1,6,5,
+		1,6,2,	// Right
+
+		5,7,4,
+		5,7,6,	// Behind
+
+		4,3,0,
+		4,3,7,	// Left
+
+		0,5,1,
+		0,5,4,	// Bottom
+
+		3,6,2,
+		3,6,7	// Top
 	};
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
 }

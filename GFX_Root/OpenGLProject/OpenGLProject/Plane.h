@@ -7,6 +7,6 @@ public:
 	Plane();
 	~Plane();
 
-	// Loads plane verts into GL_ARRAY_BUFFER
-	void Init();
+	// Loads plane into buffer
+	void Load();
 };

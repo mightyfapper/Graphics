@@ -7,6 +7,6 @@ public:
 	Cube();
 	~Cube();
 
-	// Loads cube verts into GL_ARRAY_BUFFER
-	void Init();
+	// Loads cube into buffer
+	void Load();
 };

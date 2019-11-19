@@ -2,7 +2,10 @@
 
 Plane::Plane()
 {
-	type = 2;
+	obj_Type = 2;
+	buf_Stride = 4;
+	ele_Number = 6;
+	tex_Slot = 0;
 }
 
 Plane::~Plane()
@@ -10,17 +13,22 @@ Plane::~Plane()
 
 }
 
-void Plane::Init()
+void Plane::Load()
 {
-	static const GLfloat verts[] = {
-		-0.5f, -0.5,
-		0.5f, -0.5,
-		0.5f, 0.5,
-		
-		0.5f, 0.5,
-		-0.5f, 0.5,
-		-0.5f, -0.5
+	float verts[] =
+	{
+		-1, -1,		0, 0,   // bottom left
+		1, -1,		0, 1,   // bottom right
+		1,  1,		1, 1,   // top right
+		-1, 1,		1, 0    // top left
+	};
+
+	GLuint elements[] =
+	{
+		0, 1, 2, // first triangle
+		0, 2, 3  // second triangle
 	};
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(elements), elements, GL_STATIC_DRAW);
 }

@@ -12,10 +12,13 @@ public:
 	~GameObject();
 
 	// 3D or 2D
-	GLuint type;
+	GLuint obj_Type;
+	GLuint buf_Stride;
+	GLuint ele_Number;
+	GLuint tex_Slot;
 
 	// Current state
-	glm::vec3 position;
+	glm::vec3 position, rotation;
 	
 	glm::vec4 color;
 	glm::mat4 Model_MAT;
@@ -28,7 +31,6 @@ public:
 	// Sets new values
 	void SetPosition(glm::vec3 pos);
 	void SetScale(glm::vec3 scl);
-	void SetColor(glm::vec4 clr);
 
 	// Uses current values of position
 	void Translate(glm::vec3 trn);

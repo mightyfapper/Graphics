@@ -2,7 +2,10 @@
 
 GameObject::GameObject()
 {
-	type = 0;
+	obj_Type = 0;
+	buf_Stride = 0;
+	ele_Number = 0;
+	tex_Slot = 0;
 
 	pos_MAT = glm::mat4();
 	rot_MAT = glm::mat4();
@@ -11,7 +14,7 @@ GameObject::GameObject()
 
 	// Defaults
 	position = glm::vec3();
-	color = glm::vec4(0, 0, 0, 1);
+	rotation = glm::vec3();
 
 	InitModel();
 }
@@ -41,15 +44,6 @@ void GameObject::SetPosition(glm::vec3 p)
 	SetModel();
 }
 
-void GameObject::Rotate(GLfloat rVal, glm::vec3 rAxis)
-{
-	// From degree to rad
-	GLfloat rad = (rVal * 3.14f) / 180;
-
-	rot_MAT = glm::rotate(rad, rAxis);
-	SetModel();
-}
-
 void GameObject::SetScale(glm::vec3 s)
 {
 	scl_MAT = glm::scale(s);
@@ -67,9 +61,26 @@ void GameObject::Translate(glm::vec3 t)
 	SetModel();
 }
 
-void GameObject::SetColor(glm::vec4 c)
+void GameObject::Rotate(GLfloat rVal, glm::vec3 rAxis)
 {
-	color = c;
+	float temp;
+
+	for(int i=0; i<3; i++)
+	{
+		temp = rVal * rAxis[i];
+		// If not set
+		if (temp == 0)
+			continue;
+
+		// Else
+		rotation[i] += temp;
+
+		// From degree to rad
+		GLfloat rad = (rotation[i] * 3.14f) / 180;
+
+		rot_MAT = glm::rotate(rad, rAxis);
+	}
+	SetModel();
 }
 
 void GameObject::SetModel()
