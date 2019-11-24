@@ -15,6 +15,7 @@ public:
 	Render();
 	~Render();
 
+	// Renderer needs camera's View and Projection MAT to draw
 	Camera *cameraRef;
 
 	// Generate vertex buffer with vertexBufferID as reference

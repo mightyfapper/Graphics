@@ -18,9 +18,9 @@ void Plane::Load()
 	float verts[] =
 	{
 		-1, -1,		0, 0,   // bottom left
-		1, -1,		0, 1,   // bottom right
-		1,  1,		1, 1,   // top right
-		-1, 1,		1, 0    // top left
+		1, -1,		0, 500,   // bottom right
+		1,  1,		500, 500,   // top right
+		-1, 1,		500, 0    // top left
 	};
 
 	GLuint elements[] =

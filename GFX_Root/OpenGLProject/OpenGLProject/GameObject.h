@@ -18,11 +18,12 @@ public:
 	GLuint tex_Slot;
 
 	// Current state
-	glm::vec3 position, rotation;
+	glm::vec3 position, rotation, scale;
 	
 	glm::vec4 color;
 	glm::mat4 Model_MAT;
 
+	// Player needs window reference to get input events
 	GLFWwindow *windowRef;
 	
 	// Sets default value and calls SetModel()

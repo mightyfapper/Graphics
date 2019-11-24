@@ -1,2 +1,8 @@
-﻿  Texture.cpp
+﻿  Cube.cpp
+  GameObject.cpp
+  Plane.cpp
+  Render.cpp
+  Texture.cpp
+  main.cpp
+  Generating Code...
   OpenGLProject.vcxproj -> S:\git\Graphics\GFX_Root\OpenGLProject\Debug\OpenGLProject.exe
