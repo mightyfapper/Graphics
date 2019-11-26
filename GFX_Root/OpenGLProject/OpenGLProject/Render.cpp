@@ -3,9 +3,12 @@
 Render::Render()
 {
 	VA_ID = 0;
+	VB_ID = 0;
+	EB_ID = 0;
 	program_ID = 0;
 	vertexPosition_ID = 0;
 	texCoord_ID = 0;
+	texture_ID = 0;
 	MVP_ID = 0;
 
 	MVP_MAT = glm::mat4();

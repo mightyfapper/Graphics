@@ -42,14 +42,7 @@ public:
 	// Saves MVP calculation
 	void SetModel();
 
-	// Input loop
-	// +X is right
-	// +Y is forward
-	// +Z is up
-	void CheckInput(GLfloat speed);
-
-	void CheckCollision(GameObject *GO);
-
 private:
 	glm::mat4 pos_MAT, rot_MAT, scl_MAT;
+
 };

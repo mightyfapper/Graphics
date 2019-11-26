@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Cube.h"
 #include "Plane.h"
+#include "Player.h"
 
 int main()
 {
@@ -15,7 +16,7 @@ int main()
 	Camera	*camera = new Camera();
 
 	Plane	*ground = new Plane();
-	Cube	*player = new Cube();
+	Player	*player = new Player();
 	Cube	*wall_1 = new Cube();
 	Cube	*wall_2 = new Cube();
 	Plane	*edge_L = new Plane();
@@ -86,7 +87,7 @@ int main()
 			glm::vec3(0, 0, 1)
 		);
 		
-		player->CheckInput(0.1f);
+		player->CheckInput(0.01f);
 
 		player->CheckCollision(wall_1);
 		player->CheckCollision(wall_2);
