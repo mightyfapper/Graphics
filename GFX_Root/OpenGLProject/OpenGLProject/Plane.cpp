@@ -13,14 +13,14 @@ Plane::~Plane()
 
 }
 
-void Plane::Load()
+void Plane::Load(int s)
 {
 	float verts[] =
 	{
 		-1, -1,		0, 0,   // bottom left
-		1, -1,		0, 500,   // bottom right
-		1,  1,		500, 500,   // top right
-		-1, 1,		500, 0    // top left
+		1, -1,		0, s,   // bottom right
+		1,  1,		s, s,   // top right
+		-1, 1,		s, 0    // top left
 	};
 
 	GLuint elements[] =

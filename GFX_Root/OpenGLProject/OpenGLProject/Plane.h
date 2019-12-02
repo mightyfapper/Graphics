@@ -8,5 +8,5 @@ public:
 	~Plane();
 
 	// Loads plane into buffer
-	void Load();
+	void Load(int s);
 };

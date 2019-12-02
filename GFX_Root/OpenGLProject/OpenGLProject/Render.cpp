@@ -55,7 +55,6 @@ void Render::Draw(GameObject *GO)
 	// Set MVP in vertex shader
 	glUniformMatrix4fv(MVP_ID, 1, GL_FALSE, &MVP_MAT[0][0]);
 
-
 	// Get GO parameters
 	int slot = GO->tex_Slot;
 	int type = GO->obj_Type;

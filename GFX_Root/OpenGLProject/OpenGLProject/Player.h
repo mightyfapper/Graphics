@@ -1,5 +1,6 @@
 #pragma once
 #include "Cube.h"
+#include "Wall.h"
 
 class Player : public Cube
 {
@@ -7,16 +8,22 @@ public:
 	Player();
 	~Player();
 
+	bool canMove;
+
+	float Score;
+
 	// Input loop
 	// +X is right
 	// +Y is forward
 	// +Z is up
 	void CheckInput(GLfloat speed);
 
-	void CheckCollision(GameObject* GO);
+	void CheckCollision(Wall *GO);
 
 private:
-	enum E_positionState { center, right, left };
 	int positionState;
-	bool canMove;
+	bool buttonUp;
+
+	double currentFrame, deltaTime, lastFrame;
+
 };
